@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Charts from './Charts';
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-const compareNumbers = (a, b) => a - b;
 
 const App = () => {
    const [data, setData] = useState([]);
