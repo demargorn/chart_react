@@ -41,21 +41,7 @@ const App = () => {
          <Charts className='stacked' {...props} />
          <Charts className='layered' {...props} />
          <Charts className='horizontal' {...props} />
-                  
-
-         {/* <div className='Legend'>
-            {labels.map((label, labelIndex) => {
-               return (
-                  <div>
-                     <span
-                        className='Legend--color'
-                        style={{ backgroundColor: colors[labelIndex % colors.length] }}
-                     />
-                     <span className='Legend--label'>{label}</span>
-                  </div>
-               );
-            })}
-         </div> */}
+         <Charts className='Legend' {...props} />
       </section>
    );
 };

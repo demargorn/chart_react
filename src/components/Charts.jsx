@@ -56,7 +56,7 @@ const Charts = ({ className, ...props }) => {
    function handlerLabelMap() {
       return labels.map((label, labelIndex) => {
          return (
-            <div>
+            <div key={labelIndex}>
                <span
                   className='Legend--color'
                   style={{ backgroundColor: colors[labelIndex % colors.length] }}
@@ -67,18 +67,16 @@ const Charts = ({ className, ...props }) => {
       });
    }
 
-   // return (
-   //    <div className={'Charts ' + (className === 'horizontal' ? className : '')}>
-   //       {handlerDataMap()}
-   //    </div>
-   // );
-
-
    return (
-      
-      <div className={'Charts ' + (className === 'horizontal' ? className : '')}>
-         {handlerDataMap()}
-      </div>
+      <>
+         {className === 'Legend' ? (
+            <div className={'Legend'}>{handlerLabelMap()}</div>
+         ) : (
+            <div className={'Charts ' + (className === 'horizontal' ? className : '')}>
+               {handlerDataMap()}
+            </div>
+         )}
+      </>
    );
 };
 

@@ -111,6 +111,8 @@
    border-radius: 2px;
    width: 16px;
    height: 16px;
+   margin-left: 50px;
+
 }
 .Legend--label {
    display: inline-block;
