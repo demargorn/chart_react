@@ -1,6 +1,5 @@
+import { compareNumbers } from './supportFunctions';
 import ChartItem from './ChartItem';
-
-const compareNumbers = (a, b) => a - b;
 
 const Charts = ({ className, ...props }) => {
    const { data, series, labels, colors, max } = props;
@@ -53,30 +52,10 @@ const Charts = ({ className, ...props }) => {
       });
    }
 
-   function handlerLabelMap() {
-      return labels.map((label, labelIndex) => {
-         return (
-            <div key={labelIndex}>
-               <span
-                  className='Legend--color'
-                  style={{ backgroundColor: colors[labelIndex % colors.length] }}
-               />
-               <span className='Legend--label'>{label}</span>
-            </div>
-         );
-      });
-   }
-
    return (
-      <>
-         {className === 'Legend' ? (
-            <div className={'Legend'}>{handlerLabelMap()}</div>
-         ) : (
-            <div className={'Charts ' + (className === 'horizontal' ? className : '')}>
-               {handlerDataMap()}
-            </div>
-         )}
-      </>
+      <div className={'Charts ' + (className === 'horizontal' ? className : '')}>
+         {handlerDataMap()}
+      </div>
    );
 };
 

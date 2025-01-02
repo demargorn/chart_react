@@ -1,22 +1,13 @@
 import { useState, useEffect } from 'react';
+import { getRandomInt } from './supportFunctions';
 import Charts from './Charts';
-
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+import LegendCharts from './LegendCharts';
 
 const App = () => {
    const [data, setData] = useState([]);
    const series = ['France', 'Italy', 'England', 'Sweden', 'Germany'];
    const labels = ['cats', 'dogs', 'horses', 'ducks', 'cows'];
    const colors = ['#43A19E', '#7B43A1', '#F2317A', '#FF9824', '#58CF6C'];
-
-   function populateArray() {
-      const series = 5;
-      const serieLength = 5;
-
-      let data = new Array(series).fill(new Array(serieLength).fill(0));
-      data = data.map((serie) => serie.map((i) => getRandomInt(0, 20)));
-      setData(data);
-   }
 
    const max = [...data].reduce(
       (max, serie) =>
@@ -26,6 +17,15 @@ const App = () => {
          ),
       0
    );
+
+   function populateArray() {
+      const series = 5;
+      const serieLength = 5;
+      let data = new Array(series).fill(new Array(serieLength).fill(0));
+
+      data = data.map((serie) => serie.map((i) => getRandomInt(0, 20)));
+      setData(data);
+   }
 
    const props = { data, series, labels, colors, max };
 
@@ -40,7 +40,7 @@ const App = () => {
          <Charts className='stacked' {...props} />
          <Charts className='layered' {...props} />
          <Charts className='horizontal' {...props} />
-         <Charts className='Legend' {...props} />
+         <LegendCharts {...props} />
       </section>
    );
 };

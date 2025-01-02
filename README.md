@@ -1,1 +1,1 @@
-# Chart React App
+# Charts React App
